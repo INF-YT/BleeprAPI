@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
   def index
     @customers = Customer.all
     respond_with @customers

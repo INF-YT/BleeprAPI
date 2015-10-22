@@ -26,6 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use responders to make controllers nice and clean
 gem "responders"
 
+gem "actioncable", github: 'rails/actioncable'
+
+gem "puma"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
