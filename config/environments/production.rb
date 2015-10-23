@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.middleware.use BleeprActionCable
+  config.web_socket_server_url = "wss://burger.bleepr.io/"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
