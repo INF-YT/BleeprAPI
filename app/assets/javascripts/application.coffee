@@ -5,7 +5,7 @@
 #= require_tree .
 
 @App = {}
-App.cable = Cable.createConsumer 'ws://' + window.location.host + '/websocket'
+App.cable = Cable.createConsumer 'ws://' + window.location.host + ':28080'
 App.messages = App.cable.subscriptions.create 'CustomersChannel',
   received: (data) ->
     console.log data
