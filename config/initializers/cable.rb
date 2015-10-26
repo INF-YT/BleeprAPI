@@ -1,1 +1,1 @@
-ActionCable.server.config.allowed_request_origins = %w(http://burger.bleepr.io)
+ActionCable.server.config.disable_request_forgery_protection = true
