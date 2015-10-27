@@ -6,9 +6,9 @@
 
 @App = {}
 App.cable = Cable.createConsumer 'ws://' + window.location.host + '/websocket/'
-App.messages = App.cable.subscriptions.create 'CustomersChannel',
+App.messages = App.cable.subscriptions.create 'ButtonsChannel',
   received: (data) ->
-    console.log data
+    $("#button").text(data.button)
 
   renderMessage: (data) ->
     console.log data

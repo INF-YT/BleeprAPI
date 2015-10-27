@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :customers
   resources :cards
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
+  get 'buttons' => 'buttons#index'
+  post 'buttons/:id' => 'buttons#pressed'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
