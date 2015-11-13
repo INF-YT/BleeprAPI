@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :customers
-  resources :cards
+  resources :customers do
+    resources :cards
+  end
+  resources :cards, only: [:show]
+  resources :tables do
+    resources :occupancies
+  end
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
   get 'buttons' => 'buttons#index'
   post 'buttons/:id' => 'buttons#pressed'

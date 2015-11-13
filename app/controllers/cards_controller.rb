@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   respond_to :json
   def index
-    @cards = Card.all
+    @cards = Card.where(customer_id: params[:customer_id])
     respond_with @cards
   end
 

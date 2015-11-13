@@ -1,0 +1,32 @@
+class OccupanciesController < ApplicationController
+  respond_to :json
+  def index
+    @occupancies = Table.find(params[:table_id]).occupancies
+    respond_with @occupancies
+  end
+
+  def show
+    @occupancy = Occupancy.find(params[:id])
+    respond_with @occupancy
+  end
+
+  def create
+    @occupancy = Table.find(params[:table_id]).occupancies.create(table_params)
+    respond_with @occupancy
+  end
+
+  def update
+    @occupancy = Occupancy.find(params[:id]).update_attributes(table_params)
+    respond_with @occupancy
+  end
+
+  def destroy
+    @occupancy = Occupancy.find(params[:id]).destroy
+    respond_with @occupancy
+  end
+
+  private
+    def table_params
+      params.require(:occupancy).permit(:prebooked, :start, :end, :customer_id, :occupied)
+    end
+end
