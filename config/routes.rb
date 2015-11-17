@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :customers do
     resources :cards
+    resources :customer_orders, path: 'orders'
   end
-  resources :cards, only: [:show]
+  resources :cards, only: [:show] do
+    resources :orders
+  end
   resources :tables do
     resources :occupancies do
       collection do
