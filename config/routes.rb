@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   end
   resources :cards, only: [:show]
   resources :tables do
-    resources :occupancies
+    resources :occupancies do
+      collection do
+        get 'current'
+        get 'bookings'
+      end
+    end
   end
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
   get 'buttons' => 'buttons#index'

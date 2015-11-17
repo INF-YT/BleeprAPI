@@ -5,6 +5,16 @@ class OccupanciesController < ApplicationController
     respond_with @occupancies
   end
 
+  def current
+    @occupancies = Table.find(params[:table_id]).occupancies.where(occupied: true)
+    respond_with @occupancies
+  end
+
+  def bookings
+    @occupancies = Table.find(params[:table_id]).occupancies.where(prebooked: true)
+    respond_with @occupancies
+  end
+
   def show
     @occupancy = Occupancy.find(params[:id])
     respond_with @occupancy
