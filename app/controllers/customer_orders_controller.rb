@@ -1,7 +1,7 @@
 class CustomerOrdersController < ApplicationController
   respond_to :json
   def index
-    @orders = Customer.find(:customer_id).orders
+    @orders = Customer.find(params[:customer_id]).orders
     respond_with @orders
   end
 
@@ -11,7 +11,7 @@ class CustomerOrdersController < ApplicationController
   end
 
   def create
-    @order = Customer.find(:customer_id).cards.first.orders.create(order_params)
+    @order = Customer.find(params[:customer_id]).cards.first.orders.create(order_params)
     respond_with @order
   end
 

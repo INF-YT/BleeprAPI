@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   respond_to :json
   def index
-    @orders = Card.find(:card_id).orders
+    @orders = Card.find(params[:card_id]).orders
     respond_with @orders
   end
 
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Card.find(:card_id).create(order_params)
+    @order = Card.find(params[:card_id]).create(order_params)
     respond_with @order
   end
 
