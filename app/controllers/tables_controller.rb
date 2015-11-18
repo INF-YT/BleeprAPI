@@ -25,6 +25,14 @@ class TablesController < ApplicationController
     respond_with @table
   end
 
+  def assign_order
+    @table = Table.find(params[:id])
+    @order = Order.find(params[:order])
+    @order.table = @table
+    @order.save
+    head :ok
+  end
+
   private
     def table_params
       params.require(:table).permit(:name)

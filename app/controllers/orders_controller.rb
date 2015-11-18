@@ -11,13 +11,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Card.find(params[:card_id]).create(order_params)
-    respond_with @order
+    @order = Card.find(params[:card_id]).orders.create(order_params)
+    respond_with @order, location: -> {card_order_path(@order.card, @order)}
   end
 
   def update
     @order = Order.find(params[:id]).update_attributes(order_params)
-    respond_with @order
+    respond_with @order, location: -> {card_order_path(@order.card, @order)}
   end
 
   def destroy
@@ -27,6 +27,6 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:customer_id, :card_id)
+      params.require(:order).permit(:customer_id, :card_id, :status)
     end
 end

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
         get 'bookings'
       end
     end
+    member do
+      post 'assign_order/:order' => 'tables#assign_order'
+    end
   end
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
   get 'buttons' => 'buttons#index'
