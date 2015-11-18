@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get 'bookings'
       end
     end
+    resources :table_orders, path: 'orders'
     member do
       post 'assign_order/:order' => 'tables#assign_order'
     end
