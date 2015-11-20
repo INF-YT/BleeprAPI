@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120164228) do
+ActiveRecord::Schema.define(version: 20151120165432) do
 
   create_table "cards", id: false, force: :cascade do |t|
     t.string   "id",          null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151120164228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "table_id"
+    t.integer  "feedback"
   end
 
   add_index "orders", ["card_id"], name: "index_orders_on_card_id"
