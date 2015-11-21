@@ -22,17 +22,17 @@ class OccupanciesController < ApplicationController
 
   def create
     @occupancy = Table.find(params[:table_id]).occupancies.create(table_params)
-    respond_with @occupancy
+    respond_with @occupancy, location: -> {table_occupancies_path(@occupancy.table, @occupancy)}
   end
 
   def update
     @occupancy = Occupancy.find(params[:id]).update_attributes(table_params)
-    respond_with @occupancy
+    respond_with @occupancy, location: -> {table_occupancies_path(@occupancy.table, @occupancy)}
   end
 
   def destroy
     @occupancy = Occupancy.find(params[:id]).destroy
-    respond_with @occupancy
+    head :ok
   end
 
   private
