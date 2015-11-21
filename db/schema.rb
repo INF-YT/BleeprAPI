@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120165432) do
+ActiveRecord::Schema.define(version: 20151121180816) do
+
+  create_table "bleeprs", id: false, force: :cascade do |t|
+    t.string   "id",         null: false
+    t.integer  "table_id"
+    t.boolean  "is_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bleeprs", ["id"], name: "index_bleeprs_on_id"
+  add_index "bleeprs", ["table_id"], name: "index_bleeprs_on_table_id"
 
   create_table "cards", id: false, force: :cascade do |t|
     t.string   "id",          null: false

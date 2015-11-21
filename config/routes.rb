@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bleeprs
+
   resources :orders do
     collection do
       get 'open'
