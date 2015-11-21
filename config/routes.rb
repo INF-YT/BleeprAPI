@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :customer_orders, path: 'orders'
   end
   resources :cards, only: [:show] do
-    resources :orders
+    resources :card_orders, path: 'orders'
   end
   resources :tables do
     resources :occupancies do
@@ -18,6 +18,13 @@ Rails.application.routes.draw do
       post 'assign_order/:order' => 'tables#assign_order'
     end
   end
+
+  resources :orders do
+    collection do
+      get 'open'
+    end
+  end
+
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
   get 'buttons' => 'buttons#index'
   post 'buttons/:id' => 'buttons#pressed'

@@ -1,12 +1,7 @@
-class OrdersController < ApplicationController
+class CardOrdersController < ApplicationController
   respond_to :json
   def index
-    @orders = Order.all
-    respond_with @orders
-  end
-
-  def open
-    @orders = Order.where(status: "open")
+    @orders = Card.find(params[:card_id]).orders
     respond_with @orders
   end
 
@@ -16,13 +11,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(order_params)
-    respond_with @order, location: -> {order_path(@order)}
+    @order = Card.find(params[:card_id]).orders.create(order_params)
+    respond_with @order, location: -> {card_card_order_path(@order.card, @order)}
   end
 
   def update
     @order = Order.find(params[:id]).update_attributes(order_params)
-    respond_with @order, location: -> {order_path(@order)}
+    respond_with @order, location: -> {card_card_order_path(@order.card, @order)}
   end
 
   def destroy
