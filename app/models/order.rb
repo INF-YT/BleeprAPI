@@ -5,9 +5,11 @@ class Order < ActiveRecord::Base
 
   private
     def stream_update
-      ActionCable.server.broadcast 'tables',
-        table_id: self.table.id,
-        order_id: self.id,
-        status: self.status
+      unless self.table.nil?
+        ActionCable.server.broadcast 'tables',
+          table_id: self.table.id,
+          order_id: self.id,
+          status: self.status
+      end
     end
 end
