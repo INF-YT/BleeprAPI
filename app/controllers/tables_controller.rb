@@ -5,9 +5,6 @@ class TablesController < ApplicationController
     respond_with @tables
   end
 
-  def occupied
-    @tables =
-
   def show
     @table = Table.find(params[:id])
     respond_with @table
