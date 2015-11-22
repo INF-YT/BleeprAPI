@@ -5,6 +5,9 @@ class TablesController < ApplicationController
     respond_with @tables
   end
 
+  def occupied
+    @tables =
+
   def show
     @table = Table.find(params[:id])
     respond_with @table
@@ -35,6 +38,6 @@ class TablesController < ApplicationController
 
   private
     def table_params
-      params.require(:table).permit(:name, :position_x, :position_y, :width, :height)
+      params.require(:table).permit(:name, :position_x, :position_y, :width, :height, :capacity)
     end
 end
