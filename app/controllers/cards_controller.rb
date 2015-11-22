@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.create(card_params)
+    @card = Customer.find(params[:customer_id]).cards.create(card_params)
     respond_with @card
   end
 
