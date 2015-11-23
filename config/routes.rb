@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :table_orders, path: 'orders'
     member do
       post 'assign_order/:order' => 'tables#assign_order'
+      post 'call_waiter' => 'buttons#call_waiter'
+      post 'request_bill' => 'buttons#request_bill'
+      post 'leave_table' => 'buttons#leave_table'
     end
   end
 
