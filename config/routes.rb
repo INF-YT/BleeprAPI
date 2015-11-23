@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookings
   resources :customers do
     resources :cards
     resources :customer_orders, path: 'orders'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122211240) do
+ActiveRecord::Schema.define(version: 20151123222708) do
 
   create_table "bleeprs", id: false, force: :cascade do |t|
     t.string   "id",         null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151122211240) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "table_id"
+    t.integer  "covers"
   end
 
   add_index "occupancies", ["customer_id"], name: "index_occupancies_on_customer_id"

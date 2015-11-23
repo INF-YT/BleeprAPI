@@ -1,0 +1,8 @@
+<p><%= flash[:alert] if flash[:alert] %>
+<%= form_for @booking, url: {controller: "bookings", action: "create"} do |f| %>
+  <%= f.datetime_select :start %>
+  <%= f.datetime_select :end %>
+  <%= f.text_field :covers %>
+  <%= f.text_field :customer %>
+  <%= f.submit %>
+<% end %>
