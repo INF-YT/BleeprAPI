@@ -5,6 +5,11 @@ class CustomerOrdersController < ApplicationController
     respond_with @orders
   end
 
+  def pending
+    @orders = Customer.find(params[:customer_id]).orders.where(status: "pending")
+    respond_with @orders
+  end
+
   def show
     @order = Order.find(params[:id])
     respond_with @order
