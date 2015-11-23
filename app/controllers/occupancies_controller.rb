@@ -26,7 +26,8 @@ class OccupanciesController < ApplicationController
   end
 
   def update
-    @occupancy = Occupancy.find(params[:id]).update_attributes(table_params)
+    @occupancy = Occupancy.find(params[:id])
+    @occupancy.update_attributes(table_params)
     respond_with @occupancy, location: -> {table_occupancies_path(@occupancy.table, @occupancy)}
   end
 
