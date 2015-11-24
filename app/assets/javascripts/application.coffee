@@ -3,6 +3,8 @@
 #= require turbolinks
 #= require cable
 #= require_tree .
+#= require moment
+#= require bootstrap-datetimepicker
 
 @App = {}
 App.cable = Cable.createConsumer 'ws://' + window.location.host + '/websocket/'
