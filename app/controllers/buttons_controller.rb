@@ -12,6 +12,7 @@ class ButtonsController < ApplicationController
   def leave_table
     Table.find(params[:id]).occupancies.each do |o|
       o.occupied = false
+      o.end = Time.now
       o.save
     end
     head :ok
