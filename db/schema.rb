@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123222708) do
+ActiveRecord::Schema.define(version: 20151124154926) do
 
   create_table "bleeprs", id: false, force: :cascade do |t|
     t.string   "id",         null: false
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20151123222708) do
     t.integer  "width"
     t.integer  "height"
     t.integer  "capacity"
+    t.boolean  "deleted"
   end
 
 end
