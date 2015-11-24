@@ -35,7 +35,7 @@ class TablesController < ApplicationController
 
   def occupied
     @occupancies = Occupancy.where(occupied: true)
-    @tables = @occupancies.pluck(:table_id).uniq
+    @tables = {"tables" => @occupancies.pluck(:table_id).uniq}
     render json: @tables
   end
 
