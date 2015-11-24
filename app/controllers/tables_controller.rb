@@ -33,6 +33,12 @@ class TablesController < ApplicationController
     head :ok
   end
 
+  def occupied
+    @occupancies = Occupancy.where(occupied: true)
+    @tables = @occupancies.pluck(:table_id).uniq
+    render json: @tables
+  end
+
   private
     def table_params
       params.require(:table).permit(:name, :position_x, :position_y, :width, :height, :capacity)

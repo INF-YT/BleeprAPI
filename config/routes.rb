@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       post 'request_bill' => 'buttons#request_bill'
       post 'leave_table' => 'buttons#leave_table'
     end
+    collection do
+      get 'occupied'
+    end
   end
 
   resources :bleeprs
