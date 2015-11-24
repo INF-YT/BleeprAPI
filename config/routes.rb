@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
   resources :cards, only: [:show] do
     resources :card_orders, path: 'orders' do
-      get 'incomplete'
+      collection do
+        get 'incomplete'
+      end
     end
   end
   resources :tables do
