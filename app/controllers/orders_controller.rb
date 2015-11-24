@@ -10,6 +10,11 @@ class OrdersController < ApplicationController
     respond_with @orders
   end
 
+  def progress
+    @orders = Order.where(status: "pending")
+    respond_with @orders
+  end
+
   def show
     @order = Order.find(params[:id])
     respond_with @order

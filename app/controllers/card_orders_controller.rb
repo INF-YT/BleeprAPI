@@ -5,6 +5,11 @@ class CardOrdersController < ApplicationController
     respond_with @orders
   end
 
+  def incomplete
+    @orders = Card.find(params[:card_id]).orders.where("status != ?", "complete")
+    respond_with @orders
+  end
+
   def show
     @order = Order.find(params[:id])
     respond_with @order

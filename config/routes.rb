@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :customer_orders, path: 'orders'
   end
   resources :cards, only: [:show] do
-    resources :card_orders, path: 'orders'
+    resources :card_orders, path: 'orders' do
+      get 'incomplete'
+    end
   end
   resources :tables do
     resources :occupancies do
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   resources :orders do
     collection do
       get 'open'
+      get 'progress'
     end
   end
 
