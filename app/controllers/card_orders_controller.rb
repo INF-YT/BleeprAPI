@@ -1,5 +1,5 @@
 class CardOrdersController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
   def index
     @orders = Card.find(params[:card_id]).orders
     respond_with @orders
@@ -9,6 +9,10 @@ class CardOrdersController < ApplicationController
     @orders = Card.find(params[:card_id]).orders.where("status != ?", "complete")
     respond_with @orders
   end
+
+  def new
+    @order = Card.find(params[:card_id]).orders.new
+    respond_with @order
 
   def show
     @order = Order.find(params[:id])
