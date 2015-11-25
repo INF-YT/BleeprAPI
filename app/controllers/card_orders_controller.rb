@@ -13,6 +13,7 @@ class CardOrdersController < ApplicationController
   def new
     @order = Card.find(params[:card_id]).orders.new
     respond_with @order
+  end
 
   def show
     @order = Order.find(params[:id])
